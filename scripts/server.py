@@ -4,8 +4,8 @@
 # Author        : Labinot Rashiti
 # Email         : r.labinot@gmail.com
 # Date          : 24.06.2019
-# Description   : This script is used to launch a HTTP server that will 
-#				  receive the data and save it in the influxDB.
+# Description   : This script is used to launch a HTTP server that will
+#                 receive the data and save it in the influxDB.
 ########################################################################
 
 # IMPORT FOR THE RECEIVING DATA AND PARSING
@@ -20,8 +20,14 @@ import datetime
 import pytz
 import requests
 
+HOST = "localhost"
+PORT = 8086
+USER = "root"
+PASSWORD = "root"
+DATABASE = "iotawater"
+
 # create the connexion with InfluxDB
-client = InfluxDBClient('localhost', 8086, 'root', 'root', 'iotawater')
+client = InfluxDBClient(HOST, PORT, USER, PASSWORD, DATABASE)
 
 app = Flask(__name__)
 

@@ -15,6 +15,11 @@
 import serial
 import time
 
+# INPUTS PARAMETERS
+DEV_EUI = "XXXXXXXXXXXXXXXX"
+APP_EUI = "XXXXXXXXXXXXXXXX"
+APP_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
 # Serial parameters to use LoRa on Microchip rn2483
 SERIAL_PORT = "/dev/ttyUSB1"
 BAUDRATE = 57600
@@ -43,17 +48,17 @@ msg = ser.readline().decode("UTF-8").strip() # strip() delete the extra caracter
 print("AppEUI: " + msg)
 
 # set DevEUI               
-ser.write(('mac set deveui XXXXXXXXXXXXXXXX\r\n').encode('UTF-8'))
+ser.write(("mac set deveui " + DEV_EUI + "\r\n").encode('UTF-8'))
 msg = ser.readline().decode("UTF-8").strip() # strip() delete the extra caracters
 print("mac set deveui: " + msg)
 
 # set AppEUI
-ser.write(('mac set appeui XXXXXXXXXXXXXXXX\r\n').encode('UTF-8'))
+ser.write(("mac set appeui " + APP_EUI + "\r\n").encode('UTF-8'))
 msg = ser.readline().decode("UTF-8").strip() # strip() delete the extra caracters
 print("mac set appeui: " + msg)
 
 # set AppKey               
-ser.write(('mac set appkey XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\r\n').encode('UTF-8'))
+ser.write(("mac set appkey " + APP_KEY + "\r\n").encode('UTF-8'))
 msg = ser.readline().decode("UTF-8").strip() # strip() delete the extra caracters
 print("mac set appkey: " + msg)
 
